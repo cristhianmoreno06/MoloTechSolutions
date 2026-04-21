@@ -1,0 +1,97 @@
+---
+// Team.astro
+const members = [
+  {
+    name: "Natalia Lozano",
+    role: "Co-Founder & CFO / HR",
+    description: "Líder estratégica encargada de la gestión financiera, administrativa y el desarrollo del talento humano.",
+    image: "/images/team/member_natalia.png",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      instagram: "#",
+      linkedin: "#"
+    }
+  },
+  {
+    name: "Cristhian Moreno",
+    role: "Co-Founder & CTO / PMO",
+    description: "Líder técnico encargado de la arquitectura, desarrollo de software y gestión estratégica de proyectos (PMO).",
+    image: "/images/team/member_cristhian.png",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      instagram: "#",
+      linkedin: "#"
+    }
+  },
+  {
+    name: "Elena Rodríguez",
+    role: "Senior Software Architect",
+    description: "Arquitecta de soluciones enfocada en la creación de sistemas robustos y escalables para grandes retos.",
+    image: "/images/team/member3.png",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      instagram: "#",
+      linkedin: "#"
+    }
+  }
+];
+---
+
+<section id="team" class="py-[var(--space-section-mobile)] md:py-[var(--space-section)] bg-[var(--color-bg-primary)]">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Encabezado de Sección -->
+    <div class="text-center mb-20" data-reveal>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-4">Nuestro Equipo</h2>
+      <p class="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto">
+        Liderazgo visionario y talento técnico especializado en convertir ideas complejas en realidades digitales excepcionales.
+      </p>
+    </div>
+
+    <!-- Grid de Miembros -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      {members.map((member, index) => (
+        <div 
+          class="flex flex-col items-center text-center group" 
+          data-reveal 
+          data-reveal-delay={index * 150}
+        >
+          <!-- Foto con Efecto -->
+          <div class="relative w-48 h-48 mb-8 rounded-full overflow-hidden border-2 border-[var(--color-border)] group-hover:border-[var(--color-accent)] transition-colors duration-500 shadow-xl">
+            <img 
+              src={member.image} 
+              alt={member.name} 
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+            />
+            <div class="absolute inset-0 bg-[var(--color-accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+
+          <!-- Información -->
+          <h3 class="font-display font-bold text-2xl text-white mb-2">{member.name}</h3>
+          <p class="text-[var(--color-accent-light)] font-mono text-sm uppercase tracking-widest mb-4">{member.role}</p>
+          <p class="text-[var(--color-text-secondary)] text-base mb-8 leading-relaxed max-w-sm">
+            {member.description}
+          </p>
+
+          <!-- Redes Sociales -->
+          <div class="flex items-center gap-5">
+            <a href={member.social.facebook} class="text-[var(--color-text-muted)] hover:text-white transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href={member.social.twitter} class="text-[var(--color-text-muted)] hover:text-white transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+            </a>
+            <a href={member.social.instagram} class="text-[var(--color-text-muted)] hover:text-white transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+            <a href={member.social.linkedin} class="text-[var(--color-text-muted)] hover:text-white transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

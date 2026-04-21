@@ -48,13 +48,15 @@ const metrics = [
     <!-- Lado Derecho: Visual y Tecnologías -->
     <div class="flex flex-col gap-10" data-reveal data-reveal-delay="400">
       <!-- Ilustración/Imagen Equipo -->
-      <div class="relative w-full aspect-video rounded-[var(--radius-lg)] overflow-hidden card-gradient-border group">
-        <!-- Placeholder Astro Image. Como buena práctica, usamos div con estilo mientras se coloca imagen final -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-bg-tertiary)] to-transparent flex items-center justify-center p-8">
-          <svg class="w-24 h-24 text-[var(--color-accent)]/30 group-hover:scale-110 transition-transform duration-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-        </div>
+      <div class="relative w-full aspect-video rounded-[var(--radius-lg)] overflow-hidden card-gradient-border group bg-[var(--color-bg-tertiary)]">
+        <img 
+          src="/images/team.png" 
+          alt="Equipo MoLoTech trabajando" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+          loading="lazy"
+        />
         <!-- Capa de brillo hover -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-[var(--color-accent-glow)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-[var(--color-accent-glow)] to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"></div>
       </div>
 
       <!-- Tecnologías Core (Grid logos) -->

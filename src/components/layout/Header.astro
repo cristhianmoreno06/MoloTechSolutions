@@ -2,52 +2,154 @@
 // Header.astro
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent border-b border-transparent">
+<header
+  id="main-header"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent border-b border-transparent"
+>
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <!-- Logo MoLoTech -->
     <a href="#" class="flex items-center gap-3 group cursor-hover">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="transform group-hover:scale-105 transition-transform">
-        <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="var(--color-accent)"/>
-        <path d="M2 23L16 30L30 23V9L16 16L2 9V23Z" fill="var(--color-accent-light)" fill-opacity="0.8"/>
-        <path d="M16 30L16 16L30 9V23L16 30Z" fill="var(--color-accent)" fill-opacity="0.5"/>
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="transform group-hover:scale-105 transition-transform"
+      >
+        <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="var(--color-accent)"></path>
+        <path
+          d="M2 23L16 30L30 23V9L16 16L2 9V23Z"
+          fill="var(--color-accent-light)"
+          fill-opacity="0.8"></path>
+        <path
+          d="M16 30L16 16L30 9V23L16 30Z"
+          fill="var(--color-accent)"
+          fill-opacity="0.5"></path>
       </svg>
-      <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-[var(--color-accent-light)] transition-colors">
+      <span
+        class="font-display font-bold text-xl tracking-tight text-white group-hover:text-[var(--color-accent-light)] transition-colors"
+      >
         MoLoTech
       </span>
     </a>
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center gap-8">
-      <a href="#hero" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover">Inicio</a>
-      <a href="#services" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover">Servicios</a>
-      <a href="#portfolio" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover">Portafolio</a>
-      <a href="#about" class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover">Nosotros</a>
+      <a
+        href="#hero"
+        class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover"
+        >Inicio</a
+      >
+      <a
+        href="#about"
+        class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover"
+        >Nosotros</a
+      >
+      <a
+        href="#services"
+        class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover"
+        >Servicios</a
+      >
+      <a
+        href="#portfolio"
+        class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover"
+        >Portafolio</a
+      >
+      <a
+        href="#testimonials"
+        class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover"
+        >Testimonios</a
+      >
+      <a
+        href="#team"
+        class="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors cursor-hover"
+        >Equipo</a
+      >
     </nav>
 
     <!-- Desktop CTA -->
     <div class="hidden md:block">
-      <a href="#contact" class="px-6 py-2.5 rounded-full text-sm font-medium bg-[var(--color-accent)] hover:bg-[var(--color-accent-light)] text-white transition-colors shadow-[0_0_15px_var(--color-accent-glow)] inline-block cursor-hover transform hover:-translate-y-0.5">
+      <a
+        href="#contact"
+        class="px-6 py-2.5 rounded-full text-sm font-medium bg-[var(--color-accent)] hover:bg-[var(--color-accent-light)] text-white transition-colors shadow-[0_0_15px_var(--color-accent-glow)] inline-block cursor-hover transform hover:-translate-y-0.5"
+      >
         Hablemos
       </a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden text-[var(--color-text-primary)] p-2 focus:outline-none" aria-label="Toggle navigation menu">
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-[var(--color-text-primary)] p-2 focus:outline-none"
+      aria-label="Toggle navigation menu"
+    >
       <!-- Lucide Icon: Menu -->
-      <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <svg
+        id="icon-menu"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><line x1="4" x2="20" y1="12" y2="12"></line><line
+          x1="4"
+          x2="20"
+          y1="6"
+          y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+      >
       <!-- Lucide Icon: X -->
-      <svg id="icon-x" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <svg
+        id="icon-x"
+        class="hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+      >
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-[var(--color-bg-secondary)]/95 backdrop-blur-xl border-b border-[var(--color-border)] md:hidden flex-col py-6 px-6 shadow-2xl">
+  <div
+    id="mobile-menu"
+    class="hidden absolute top-20 left-0 w-full bg-[var(--color-bg-secondary)]/95 backdrop-blur-xl border-b border-[var(--color-border)] md:hidden flex-col py-6 px-6 shadow-2xl"
+  >
     <nav class="flex flex-col gap-6">
-      <a href="#hero" class="mobile-link text-lg font-medium text-[var(--color-text-primary)]">Inicio</a>
-      <a href="#services" class="mobile-link text-lg font-medium text-[var(--color-text-primary)]">Servicios</a>
-      <a href="#portfolio" class="mobile-link text-lg font-medium text-[var(--color-text-primary)]">Portafolio</a>
-      <a href="#about" class="mobile-link text-lg font-medium text-[var(--color-text-primary)]">Nosotros</a>
-      <a href="#contact" class="mobile-link mt-4 px-6 py-3 text-center rounded-full text-base font-medium bg-[var(--color-accent)] text-white shadow-[0_0_15px_var(--color-accent-glow)]">
+      <a
+        href="#hero"
+        class="mobile-link text-lg font-medium text-[var(--color-text-primary)]"
+        >Inicio</a
+      >
+      <a
+        href="#services"
+        class="mobile-link text-lg font-medium text-[var(--color-text-primary)]"
+        >Servicios</a
+      >
+      <a
+        href="#portfolio"
+        class="mobile-link text-lg font-medium text-[var(--color-text-primary)]"
+        >Portafolio</a
+      >
+      <a
+        href="#about"
+        class="mobile-link text-lg font-medium text-[var(--color-text-primary)]"
+        >Nosotros</a
+      >
+      <a
+        href="#contact"
+        class="mobile-link mt-4 px-6 py-3 text-center rounded-full text-base font-medium bg-[var(--color-accent)] text-white shadow-[0_0_15px_var(--color-accent-glow)]"
+      >
         Hablemos
       </a>
     </nav>
@@ -56,45 +158,53 @@
 
 <script>
   // Script para manejar el comportamiento del Header y el Menú Mobile
-  const header = document.getElementById('main-header');
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const iconMenu = document.getElementById('icon-menu');
-  const iconX = document.getElementById('icon-x');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const header = document.getElementById("main-header");
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconMenu = document.getElementById("icon-menu");
+  const iconX = document.getElementById("icon-x");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
 
   // Glassmorphism en scroll
   const handleScroll = () => {
     if (window.scrollY > 20) {
       // Reemplazamos la clase bg-transparent y border-transparent
-      header?.classList.remove('bg-transparent', 'border-transparent');
+      header?.classList.remove("bg-transparent", "border-transparent");
       // Añadimos el fondo semitransparente, blur y borde tenue
-      header?.classList.add('bg-[var(--color-bg-primary)]/80', 'backdrop-blur-[12px]', 'border-[var(--color-border)]');
+      header?.classList.add(
+        "bg-[var(--color-bg-primary)]/80",
+        "backdrop-blur-[12px]",
+        "border-[var(--color-border)]",
+      );
     } else {
-      header?.classList.add('bg-transparent', 'border-transparent');
-      header?.classList.remove('bg-[var(--color-bg-primary)]/80', 'backdrop-blur-[12px]', 'border-[var(--color-border)]');
+      header?.classList.add("bg-transparent", "border-transparent");
+      header?.classList.remove(
+        "bg-[var(--color-bg-primary)]/80",
+        "backdrop-blur-[12px]",
+        "border-[var(--color-border)]",
+      );
     }
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener("scroll", handleScroll, { passive: true });
   // Initial check in case it's reloaded halfway down
   handleScroll();
 
   // Toggle mobile menu
-  mobileBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    mobileMenu?.classList.toggle('flex');
-    iconMenu?.classList.toggle('hidden');
-    iconX?.classList.toggle('hidden');
+  mobileBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    mobileMenu?.classList.toggle("flex");
+    iconMenu?.classList.toggle("hidden");
+    iconX?.classList.toggle("hidden");
   });
 
   // Cerrar menú al hacer click en algún enlace
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-      mobileMenu?.classList.remove('flex');
-      iconMenu?.classList.remove('hidden');
-      iconX?.classList.add('hidden');
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+      mobileMenu?.classList.remove("flex");
+      iconMenu?.classList.remove("hidden");
+      iconX?.classList.add("hidden");
     });
   });
 </script>
