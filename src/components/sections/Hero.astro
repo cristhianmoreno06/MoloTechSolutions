@@ -1,0 +1,222 @@
+---
+// Hero.astro
+const keyword = "Fábrica de Desarrollo de software a medida en Colombia";
+const description =
+  "Creamos soluciones digitales (apps, sistemas y plataformas) a medida para resolver necesidades específicas de tu negocio.";
+const numProjects = 25;
+
+const words = keyword.split(" ");
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[var(--color-bg-primary)]"
+>
+  <!-- Capa de Fondo: Nombre Monumental -->
+  <div
+    class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none"
+  >
+    <div
+      id="hero-bg-container"
+      class="relative w-full h-full flex items-center justify-center overflow-hidden"
+    >
+      <span
+        id="bg-company-name"
+        class="font-display font-black text-[16vw] md:text-[18vw] leading-none text-transparent bg-clip-text bg-gradient-to-b from-white/[0.15] via-white/[0.08] to-transparent transform scale-100 blur-[1px] opacity-0 transition-opacity duration-[2000ms] tracking-tighter"
+      >
+        MoLoTech
+      </span>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(108,99,255,0.04)_0%,transparent_70%)]"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas para Partículas Magnéticas (Atracción) -->
+  <canvas
+    id="particles-canvas"
+    class="absolute inset-0 z-[1] opacity-90 pointer-events-none"></canvas>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <!-- Badge Minimal -->
+    <div
+      data-reveal
+      data-reveal-delay="100"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-border-accent)] bg-[var(--color-accent-glow)] mb-12 cursor-hover"
+    >
+      <span class="text-[var(--color-accent-light)]">✦</span>
+      <span class="text-sm font-medium text-[var(--color-text-primary)]"
+        >+{numProjects} proyectos entregados</span
+      >
+    </div>
+
+    <!-- Subheadline -->
+    <p
+      data-reveal
+      data-reveal-delay="300"
+      class="text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto font-body font-normal leading-relaxed text-shadow-sm"
+    >
+      {description}
+    </p>
+
+    <!-- CTAs -->
+    <div
+      data-reveal
+      data-reveal-delay="500"
+      class="flex flex-col sm:flex-row items-center justify-center gap-6"
+    >
+      <a
+        href="#portfolio"
+        class="w-full sm:w-auto px-10 py-5 rounded-full text-base font-semibold bg-[var(--color-accent)] hover:bg-[var(--color-accent-light)] text-white transition-all shadow-[0_0_20px_var(--color-accent-glow)] hover:shadow-[0_0_40px_var(--color-accent-glow)] transform hover:-translate-y-1 cursor-hover"
+      >
+        Ver nuestro trabajo
+      </a>
+      <a
+        href="#contact"
+        class="w-full sm:w-auto px-10 py-5 rounded-full text-base font-semibold bg-transparent border border-white/20 hover:border-[var(--color-accent-light)] text-white hover:bg-white/5 transition-all cursor-hover text-center"
+      >
+        Hablemos
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent pointer-events-none z-[5]"
+  >
+  </div>
+</section>
+
+<script>
+  // 1. Inicialización
+  setTimeout(() => {
+    const bgName = document.getElementById("bg-company-name");
+    if (bgName) bgName.style.opacity = "1";
+  }, 300);
+
+  // 2. Motor de Partículas Magnéticas (Atracción "Sticky")
+  const canvas = document.getElementById(
+    "particles-canvas",
+  ) as HTMLCanvasElement;
+  const ctx = canvas.getContext("2d")!;
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  let mouse = { x: 0, y: 0, px: 0, py: 0, lx: 0, ly: 0 };
+  window.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  class Particle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    size: number;
+    opacity: number;
+    baseX: number;
+    baseY: number;
+
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 1.2;
+      this.vy = (Math.random() - 0.5) * 1.2;
+      this.size = Math.random() * 2.5 + 1;
+      this.opacity = Math.random() * 0.6 + 0.1;
+    }
+
+    update() {
+      // Movimiento base
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // Rebotes
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+
+      // ATRACCIÓN MAGNÉTICA (Sticky effect)
+      const dx = mouse.x - this.x;
+      const dy = mouse.y - this.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      const attractionRadius = 200;
+      if (distance < attractionRadius) {
+        // Fuerza de atracción proporcional a la cercanía
+        const force = (attractionRadius - distance) / attractionRadius;
+        const speed = 4; // Ajustar para más o menos "pegajoso"
+        this.x += (dx / distance) * force * speed;
+        this.y += (dy / distance) * force * speed;
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(108, 99, 255, ${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  let particles: Particle[] = [];
+  function init() {
+    particles = [];
+    const count = window.innerWidth < 768 ? 60 : 120;
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function connect() {
+    const maxDist = 150;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < maxDist) {
+          const opacity = (1 - distance / maxDist) * 0.3;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(108, 99, 255, ${opacity})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function updateParallax() {
+    mouse.lx += (mouse.x - mouse.lx) * 0.04;
+    mouse.ly += (mouse.y - mouse.ly) * 0.04;
+    const bgName = document.getElementById("bg-company-name");
+    if (bgName) {
+      const tx = (mouse.lx - width / 2) * -0.01;
+      const ty = (mouse.ly - height / 2) * -0.01;
+      bgName.style.transform = `translate(${tx}px, ${ty}px) scale(1.05)`;
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
+    connect();
+    updateParallax();
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    init();
+  });
+</script>

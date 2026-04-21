@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Space Grotesk', 'Space Grotesk Variable', sans-serif;
+  --font-body: 'Inter', 'Inter Variable', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  /* Superficies */
+  --color-bg-primary:    #0A0A0F;
+  --color-bg-secondary:  #111118;
+  --color-bg-tertiary:   #1A1A24;
+
+  /* Acento MoLoTech */
+  --color-accent:        #6C63FF;
+  --color-accent-glow:   rgba(108, 99, 255, 0.15);
+  --color-accent-light:  #A09AF7;
+
+  /* Tipografía */
+  --color-text-primary:  #F0F0F8;
+  --color-text-secondary:#9090A8;
+  --color-text-muted:    #5A5A72;
+
+  /* Bordes */
+  --color-border:        rgba(255, 255, 255, 0.08);
+  --color-border-accent: rgba(108, 99, 255, 0.3);
+
+  /* Gradientes */
+  --gradient-hero: linear-gradient(135deg, #6C63FF 0%, #3B82F6 50%, #06B6D4 100%);
+  --gradient-card: linear-gradient(145deg, rgba(108,99,255,0.05) 0%, transparent 60%);
+
+  /* Espaciado */
+  --space-section: 7rem;
+  --space-section-mobile: 4rem;
+
+  /* Bordes redondeados */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-pill: 9999px;
+
+  /* Escala tipográfica — nunca usar valores fuera de esta escala */
+  --text-xs:   0.75rem;    /* 12px — labels, badges */
+  --text-sm:   0.875rem;   /* 14px — texto secundario */
+  --text-base: 1rem;       /* 16px — cuerpo */
+  --text-lg:   1.125rem;   /* 18px — lead text */
+  --text-xl:   1.25rem;    /* 20px — subtítulos */
+  --text-2xl:  1.5rem;     /* 24px — h3 */
+  --text-3xl:  1.875rem;   /* 30px — h2 mobile */
+  --text-4xl:  2.25rem;    /* 36px — h2 desktop */
+  --text-5xl:  3rem;       /* 48px — h1 mobile */
+  --text-6xl:  3.75rem;    /* 60px — h1 desktop */
+  --text-7xl:  4.5rem;     /* 72px — display hero */
+}
+
+/* Base resets */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Barra de progreso al hacer scroll (top de la página) */
+#scroll-progress {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  z-index: 9999;
+  height: 2px; 
+  width: 0%;
+  background: var(--gradient-hero);
+  transition: width 0.1s linear;
+}
+
+/* Cards con borde que parece gradiente — sin pseudo-elementos extra */
+.card-gradient-border {
+  background:
+    linear-gradient(var(--color-bg-secondary), var(--color-bg-secondary)) padding-box,
+    linear-gradient(145deg, rgba(108,99,255,0.5), transparent 60%) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-gradient-border:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(108, 99, 255, 0.15);
+}
+
+/* CSS para las animaciones de reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger para grids */
+[data-reveal-delay="100"] { transition-delay: 100ms; }
+[data-reveal-delay="200"] { transition-delay: 200ms; }
+[data-reveal-delay="300"] { transition-delay: 300ms; }
+[data-reveal-delay="400"] { transition-delay: 400ms; }
+[data-reveal-delay="500"] { transition-delay: 500ms; }
+
+/* Animación de Typewriter / Word Reveal */
+.word-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  display: inline-block;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.word-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Cursor (desktop) */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: exclusion;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+  display: none; /* Se maneja via JS solo en pantallas con pointer: fine */
+}
+
+@media (pointer: fine) {
+  #custom-cursor {
+    display: block;
+  }
+}
+
+.cursor-hover {
+  /* Clase que via JS la podemos detectar para expandir el cursor, opcional */
+  cursor: none;
+}

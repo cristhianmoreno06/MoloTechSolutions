@@ -1,0 +1,69 @@
+---
+const services = [
+  {
+    title: 'Desarrollo de Software a Medida',
+    description: 'Construimos plataformas web y aplicaciones móviles robustas desde cero, adaptadas metodológicamente a tus requerimientos operativos.',
+    icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>',
+    link: '#contact'
+  },
+  {
+    title: 'Integración, Sistemas y APIs',
+    description: 'Conectamos tus ecosistemas tecnológicos actuales diseñando APIs escalables para que tu información fluya en tiempo real sin fricción.',
+    icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    link: '#contact'
+  },
+  {
+    title: 'Arquitectura y Soluciones Cloud',
+    description: 'Migramos y estructuramos tus aplicativos hacia la nube operando bajo altos estándares de seguridad, disponibilidad y rendimiento.',
+    icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>',
+    link: '#contact'
+  }
+];
+---
+
+<section id="services" class="py-[var(--space-section-mobile)] md:py-[var(--space-section)] bg-[var(--color-bg-primary)]">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Header de Sección -->
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-6">
+        Nuestros Servicios
+      </h2>
+      <p class="text-[var(--color-text-secondary)] text-lg">
+        Garantizamos excelencia técnica para acelerar tu crecimiento. Dominamos el stack moderno para entregar los mejores resultados.
+      </p>
+    </div>
+
+    <!-- Grid de Servicios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <a 
+          href={service.link} 
+          class="block p-8 card-gradient-border group cursor-hover"
+          data-reveal
+          data-reveal-delay={(index + 1) * 100}
+        >
+          <!-- Contenedor del Icono -->
+          <div class="w-14 h-14 rounded-[var(--radius-md)] bg-[var(--color-bg-primary)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-accent-light)] mb-6 group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors duration-300">
+            <Fragment set:html={service.icon} />
+          </div>
+          
+          <!-- Título y Texto -->
+          <h3 class="font-display font-semibold text-xl text-white mb-3 group-hover:text-[var(--color-accent-light)] transition-colors">
+            {service.title}
+          </h3>
+          <p class="text-[var(--color-text-secondary)] font-body leading-relaxed mb-6">
+            {service.description}
+          </p>
+
+          <!-- Simulación de botón text-link -->
+          <div class="flex items-center text-sm font-medium text-[var(--color-accent-light)] group-hover:text-white transition-colors mt-auto">
+            Mas información 
+            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

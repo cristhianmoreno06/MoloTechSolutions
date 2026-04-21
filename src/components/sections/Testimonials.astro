@@ -1,0 +1,92 @@
+---
+// Testimonials.astro
+
+const testimonials = [
+  {
+    name: 'Juan Pérez',
+    company: 'Tech Solutions SAS',
+    text: "El equipo de MoLoTech entregó una solución robusta y escalable que superó nuestras expectativas.",
+    avatar: 'https://ui-avatars.com/api/?name=Juan+Perez&background=6C63FF&color=fff&size=120'
+  },
+  {
+    name: 'Laura Gómez',
+    company: 'Salud Integral',
+    text: "Profesionales altamente capacitados, cumplieron tiempos y la calidad fue excelente.",
+    avatar: 'https://ui-avatars.com/api/?name=Laura+Gomez&background=3B82F6&color=fff&size=120'
+  },
+  {
+    name: 'Carlos Ramírez',
+    company: 'Ecommerce Pro',
+    text: "Gracias a su desarrollo, nuestras ventas online aumentaron significativamente.",
+    avatar: 'https://ui-avatars.com/api/?name=Carlos+Ramirez&background=06B6D4&color=fff&size=120'
+  }
+];
+
+// Construir el bloque JSON-LD dinámicamente para los reviews
+const schemaReviews = testimonials.map(t => ({
+  "@type": "Review",
+  "author": { "@type": "Person", "name": t.name },
+  "itemReviewed": { "@type": "Organization", "name": "MoLoTech" },
+  "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+  "reviewBody": t.text
+}));
+---
+
+<section id="testimonials" class="py-[var(--space-section-mobile)] md:py-[var(--space-section)] bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] relative">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal>
+      <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-6">
+        Lo que dicen de nosotros
+      </h2>
+      <p class="text-[var(--color-text-secondary)] text-lg">
+        La satisfacción y los resultados de nuestros aliados estratégicos son nuestra carta de presentación más fuerte.
+      </p>
+    </div>
+
+    <!-- Grid de Testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, i) => (
+        <article 
+          class="card-gradient-border p-8 bg-[var(--color-bg-secondary)] flex flex-col cursor-hover group"
+          data-reveal
+          data-reveal-delay={(i + 1) * 100}
+        >
+          <!-- SVG Quote icon -->
+          <div class="mb-6 opacity-20 text-[var(--color-accent)] group-hover:opacity-40 transition-opacity">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.017 21L16.411 14.18V3H23V14.18L20.573 21H14.017ZM3 21L5.394 14.18V3H11.983V14.18L9.556 21H3Z"/>
+            </svg>
+          </div>
+          
+          <p class="text-[var(--color-text-primary)] font-body text-lg leading-relaxed flex-grow italic mb-8">
+            "{testimonial.text}"
+          </p>
+          
+          <div class="flex items-center gap-4 mt-auto">
+            <img 
+              src={testimonial.avatar} 
+              alt={`Foto de ${testimonial.name}`} 
+              loading="lazy" 
+              width="60" 
+              height="60" 
+              class="rounded-full w-12 h-12 border-2 border-[var(--color-border-accent)] object-cover"
+            />
+            <div>
+              <h4 class="font-display font-bold text-white text-base">{testimonial.name}</h4>
+              <p class="text-[var(--color-text-muted)] text-sm font-medium">{testimonial.company}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Schema JSON-LD de Reviews Inyectado -->
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": schemaReviews
+  })} />
+</section>

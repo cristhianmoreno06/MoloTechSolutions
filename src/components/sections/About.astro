@@ -1,0 +1,139 @@
+---
+// import { Image } from 'astro:assets';
+
+// Datos de las métricas para los contadores
+const metrics = [
+  { label: 'Proyectos', target: 25, suffix: '+' },
+  { label: 'Años de Experiencia', target: 5, suffix: '+' },
+  { label: 'Clientes Activos', target: 15, suffix: '+' },
+  { label: 'Tecnologías', target: 10, suffix: '+' }
+];
+---
+
+<section id="about" class="py-[var(--space-section-mobile)] md:py-[var(--space-section)] bg-[var(--color-bg-secondary)] relative overflow-hidden text-[var(--color-text-primary)]">
+  
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    
+    <!-- Lado Izquierdo: Texto y Valor -->
+    <div class="space-y-8">
+      <div data-reveal>
+        <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-6">
+          Más que código, <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[#3B82F6]">creamos valor</span>
+        </h2>
+        <div class="space-y-6 text-[var(--color-text-secondary)] font-body text-lg leading-relaxed">
+          <p>
+            En MoLoTech somos una fábrica especializada en el desarrollo de software a medida. No utilizamos plantillas; creamos sistemas, plataformas y ecosistemas integrales que resuelven los retos de negocio más exigentes de la actualidad.
+          </p>
+          <p>
+            Sabemos que el mercado actual no perdona. Por ello, nuestra filosofía radica en construir soluciones altamente competitivas, rindiendo culto a la robustez técnica corporativa combinada con las experiencias de usuario más dinámicas y eficientes del mercado colombiano y regional.
+          </p>
+        </div>
+      </div>
+
+      <!-- Métricas (Counters) -->
+      <div class="grid grid-cols-2 gap-6 pt-6 border-t border-[var(--color-border)]" data-reveal data-reveal-delay="200">
+        {metrics.map(metric => (
+          <div>
+            <div class="font-display font-bold text-4xl text-white flex items-baseline">
+              <span class="ds-counter hidden" data-target={metric.target}>0</span>
+              <noscript><span class="text-[var(--color-accent)]">{metric.target}</span></noscript>
+              <span class="text-[var(--color-accent)] ml-1">{metric.suffix}</span>
+            </div>
+            <p class="text-sm font-medium text-[var(--color-text-muted)] mt-1 uppercase tracking-wider">{metric.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Lado Derecho: Visual y Tecnologías -->
+    <div class="flex flex-col gap-10" data-reveal data-reveal-delay="400">
+      <!-- Ilustración/Imagen Equipo -->
+      <div class="relative w-full aspect-video rounded-[var(--radius-lg)] overflow-hidden card-gradient-border group">
+        <!-- Placeholder Astro Image. Como buena práctica, usamos div con estilo mientras se coloca imagen final -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-bg-tertiary)] to-transparent flex items-center justify-center p-8">
+          <svg class="w-24 h-24 text-[var(--color-accent)]/30 group-hover:scale-110 transition-transform duration-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+        </div>
+        <!-- Capa de brillo hover -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[var(--color-accent-glow)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      </div>
+
+      <!-- Tecnologías Core (Grid logos) -->
+      <div>
+        <p class="text-sm text-[var(--color-text-muted)] font-medium uppercase tracking-widest mb-4">Stack Experto</p>
+        <div class="flex flex-wrap gap-4">
+          <!-- React SVG -->
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center cursor-hover hover:bg-[var(--color-accent-glow)] transition-colors border border-[var(--color-border)] tooltip">
+            <svg width="24" height="24" viewBox="-11.5 -10.232 23 20.463" fill="var(--color-accent-light)"><circle r="2.05" fill="var(--color-accent)"/><g stroke="currentColor" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+          </div>
+          <!-- Node SVG -->
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center cursor-hover hover:bg-[var(--color-accent-glow)] transition-colors border border-[var(--color-border)] tooltip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-text-secondary)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <!-- Laravel SVG -->
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center cursor-hover hover:bg-[var(--color-accent-glow)] transition-colors border border-[var(--color-border)] tooltip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/><path d="M12 22V12"/></svg>
+          </div>
+          <!-- Vue SVG -->
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center cursor-hover hover:bg-[var(--color-accent-glow)] transition-colors border border-[var(--color-border)] tooltip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-text-secondary)"><path d="M12 20.5L3 5h4l5 8.5L17 5h4L12 20.5z"/></svg>
+          </div>
+          <!-- AWS SVG -->
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center cursor-hover hover:bg-[var(--color-accent-glow)] transition-colors border border-[var(--color-border)] tooltip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2"><path d="M22 17.5c-3 3-7 4-10 4s-7-1-10-4"/><path d="M12 9v6M9 12h6"/></svg>
+          </div>
+          <!-- Docker SVG -->
+          <div class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center cursor-hover hover:bg-[var(--color-accent-glow)] transition-colors border border-[var(--color-border)] tooltip">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--color-text-secondary)"><path d="M4 11h4v4H4v-4zM10 11h4v4h-4v-4zM16 11h4v4h-4v-4zM16 5h4v4h-4V5zM10 5h4v4h-4V5zM4 17h16v4H4v-4z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer para disparar animación de Counter
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+  };
+
+  const animateCounter = (el: HTMLElement) => {
+    el.classList.remove('hidden'); // Quitar hide (solo oculto pre-JS)
+    const targetStr = el.getAttribute('data-target');
+    if (!targetStr) return;
+    
+    const target = parseInt(targetStr, 10);
+    const duration = 2000;
+    const start = performance.now();
+
+    const update = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target).toString();
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    };
+    requestAnimationFrame(update);
+  };
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Disparar las métricas
+        const counters = entry.target.querySelectorAll('.ds-counter');
+        counters.forEach(counter => {
+          if (!counter.classList.contains('animated')) {
+            animateCounter(counter as HTMLElement);
+            counter.classList.add('animated');
+          }
+        });
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const aboutSection = document.getElementById('about');
+  if (aboutSection) counterObserver.observe(aboutSection);
+</script>

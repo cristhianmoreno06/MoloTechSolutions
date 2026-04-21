@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Services from '../components/sections/Services.astro';
+import Portfolio from '../components/sections/Portfolio.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import ContactCTA from '../components/sections/ContactCTA.astro';
+import Footer from '../components/layout/Footer.astro';
+
+// Metadata base
+const title = "Fabrica de Desarrollo de software a medida en Colombia";
+const description = "crea soluciones digitales (apps, sistemas y plataformas) a medida para resolver necesidades específicas de negocio.";
+---
+
+<BaseLayout title={title} description={description} canonicalUrl="/">
+  <Header />
+  
+  <main>
+    <Hero />
+    <About />
+    <Services />
+    <Portfolio />
+    <Testimonials />
+    <ContactCTA />
+  </main>
+  
+  <Footer />
+
+  <!-- Schema JSON-LD Obligatorio -->
+  <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "http://localhost:4321/#organization",
+          "name": "MoLoTech",
+          "url": "http://localhost:4321",
+          "logo": "http://localhost:4321/favicon.svg",
+          "description": "crea soluciones digitales (apps, sistemas y plataformas) a medida para resolver necesidades específicas de negocio.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": "Spanish"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/molotech",
+            "https://github.com/molotech",
+            "https://instagram.com/molotech"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "http://localhost:4321/#website",
+          "url": "http://localhost:4321",
+          "name": "MoLoTech",
+          "publisher": { "@id": "http://localhost:4321/#organization" }
+        },
+        {
+          "@type": "AggregateRating",
+          "itemReviewed": { "@id": "http://localhost:4321/#organization" },
+          "ratingValue": "5",
+          "bestRating": "5",
+          "ratingCount": "3"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Animaciones Core -->
+  <script src="../scripts/animations.ts"></script>
+</BaseLayout>

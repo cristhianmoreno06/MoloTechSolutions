@@ -1,0 +1,150 @@
+---
+// Portfolio.astro
+// Datos proporcionados por el usuario
+const projects = [
+  {
+    name: 'Sistema de Gestión de Inventarios',
+    description: 'Plataforma web para control y seguimiento de inventarios en tiempo real con reportes avanzados.',
+    url: 'https://demo-proyecto1.com',
+    image: 'https://via.placeholder.com/600x400/111118/6C63FF?text=Inventarios',
+    stack: ['Laravel', 'MySQL', 'Vue.js', 'Docker'],
+    category: 'web'
+  },
+  {
+    name: 'App de Citas Médicas',
+    description: 'Aplicación móvil y web para agendamiento de citas médicas con notificaciones automáticas.',
+    url: 'https://demo-proyecto2.com',
+    image: 'https://via.placeholder.com/600x400/111118/6C63FF?text=Citas+Medicas',
+    stack: ['Ionic', 'Angular', 'Node.js', 'PostgreSQL'],
+    category: 'mobile' // Mobile category
+  },
+  {
+    name: 'E-commerce Personalizado',
+    description: 'Tienda online con pasarela de pagos, gestión de productos y panel administrativo.',
+    url: 'https://demo-proyecto3.com',
+    image: 'https://via.placeholder.com/600x400/111118/6C63FF?text=E-commerce',
+    stack: ['Laravel', 'React', 'Stripe API', 'AWS'],
+    category: 'web'
+  }
+];
+
+// Filtros únicos
+const categories = ['Todos', 'Web', 'Mobile'];
+---
+
+<section id="portfolio" class="py-[var(--space-section-mobile)] md:py-[var(--space-section)] bg-[var(--color-bg-secondary)]">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Encabezado -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16" data-reveal>
+      <div class="max-w-2xl">
+        <h2 class="font-display font-bold text-3xl md:text-5xl text-white mb-4">Nuestro Trabajo</h2>
+        <p class="text-[var(--color-text-secondary)] text-lg font-body">
+          Hemos desarrollado más de 25 soluciones de alto impacto para negocios que exigen lo mejor de la tecnología.
+        </p>
+      </div>
+
+      <!-- Filtros ligeros (data attributes, sin JS pesado) -->
+      <div class="flex flex-wrap gap-2" id="portfolio-filters">
+        {categories.map((cat, index) => (
+          <button 
+            data-filter={cat.toLowerCase()} 
+            class={`px-6 py-2 rounded-full text-sm font-medium transition-colors border ${index === 0 ? 'bg-[var(--color-accent)] border-[var(--color-accent)] text-white' : 'bg-transparent border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-border-accent)] hover:text-white'} focus:outline-none cursor-hover`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Grid de Portafolio -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+      {projects.map((project, index) => (
+        <!-- El item usa data-category para el filtro -->
+        <article 
+          class="portfolio-item group card-gradient-border overflow-hidden flex flex-col h-full bg-[var(--color-bg-primary)] cursor-hover"
+          data-category={project.category}
+          data-reveal
+          data-reveal-delay={(index + 1) * 100}
+        >
+          <!-- Imagen de proyecto (Native Lazy Loading format as fallback para dominios remotos sin whitelist) -->
+          <div class="relative w-full aspect-[4/3] overflow-hidden">
+            <!-- Capa sobre la imagen -->
+            <div class="absolute inset-0 bg-[var(--color-accent)]/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <a href={project.url} target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[var(--color-accent)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <!-- Idealmente con componente <Image de astro pero simplificado con imagen HTML pura por URLs dummy remotos -->
+            <img 
+              src={project.image} 
+              alt={`Imagen de ${project.name}`}
+              loading="lazy"
+              width="600"
+              height="400"
+              class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            />
+          </div>
+
+          <!-- Información del Proyecto -->
+          <div class="p-6 flex flex-col flex-grow">
+            <!-- Stack / Categorias -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.stack.map(tech => (
+                <span class="px-2.5 py-1 rounded text-xs font-mono font-medium text-[var(--color-accent-light)] bg-[var(--color-accent-glow)]">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <h3 class="font-display font-semibold text-xl text-white mb-3 group-hover:text-[var(--color-accent-light)] transition-colors">
+              {project.name}
+            </h3>
+            
+            <p class="text-[var(--color-text-secondary)] font-body text-sm leading-relaxed mb-6">
+              {project.description}
+            </p>
+            
+            <a href={project.url} target="_blank" rel="noopener noreferrer" class="mt-auto items-center flex text-sm font-semibold text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors border-b border-transparent hover:border-[var(--color-accent)] inline-block w-max">
+              Ver Proyecto Web
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Filtros ligeros
+  const buttons = document.querySelectorAll('#portfolio-filters button');
+  const items = document.querySelectorAll<HTMLElement>('.portfolio-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remover state selecto de todos
+      buttons.forEach(b => {
+        b.className = b.className.replace('bg-[var(--color-accent)] border-[var(--color-accent)] text-white', 'bg-transparent border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-border-accent)] hover:text-white');
+      });
+
+      // Poner estilo al estado activo
+      btn.className = btn.className.replace('bg-transparent border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-border-accent)] hover:text-white', 'bg-[var(--color-accent)] border-[var(--color-accent)] text-white');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      items.forEach(item => {
+        // En lugar de display none directo, un pequeño fade out y luego none
+        const categoryMatch = filterValue === 'todos' || item.getAttribute('data-category') === filterValue;
+        
+        if (categoryMatch) {
+          item.style.display = 'flex';
+          setTimeout(() => item.style.opacity = '1', 50);
+        } else {
+          item.style.opacity = '0';
+          setTimeout(() => item.style.display = 'none', 300);
+        }
+      });
+    });
+  });
+</script>
