@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   // URL base para entornos corporativos de MoLoTech (Se reemplaza después por https://molotech.co)
   site: 'https://cristhianmoreno06.github.io',
-  base: '/moLoTech-solutions/', // IMPORTANTE
+  base: '/MoloTechSolutions/', // IMPORTANTE
   integrations: [
     sitemap()
   ],
