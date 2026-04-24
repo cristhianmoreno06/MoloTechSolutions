@@ -1,11 +1,13 @@
 ---
 // Team.astro
+const base = import.meta.env.BASE_URL;
+
 const members = [
   {
     name: "Natalia Lozano",
     role: "Co-Founder & CFO / HR",
     description: "Líder estratégica encargada de la gestión financiera, administrativa y el desarrollo del talento humano.",
-    image: "/images/team/member_natalia.png",
+    image: `${base}images/team/member_natalia.png`,
     social: {
       facebook: "#",
       twitter: "#",
@@ -17,7 +19,7 @@ const members = [
     name: "Cristhian Moreno",
     role: "Co-Founder & CTO / PMO",
     description: "Líder técnico encargado de la arquitectura, desarrollo de software y gestión estratégica de proyectos (PMO).",
-    image: "/images/team/member_cristhian.png",
+    image: `${base}images/team/member_cristhian.png`,
     social: {
       facebook: "#",
       twitter: "#",
@@ -29,7 +31,7 @@ const members = [
     name: "Elena Rodríguez",
     role: "Senior Software Architect",
     description: "Arquitecta de soluciones enfocada en la creación de sistemas robustos y escalables para grandes retos.",
-    image: "/images/team/member3.png",
+    image: `${base}images/team/member3.png`,
     social: {
       facebook: "#",
       twitter: "#",

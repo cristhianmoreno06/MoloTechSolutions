@@ -1,12 +1,14 @@
 ---
 // Portfolio.astro
+const base = import.meta.env.BASE_URL;
+
 // Datos proporcionados por el usuario
 const projects = [
   {
     name: 'Sistema de Gestión de Inventarios',
     description: 'Plataforma web para control y seguimiento de inventarios en tiempo real con reportes avanzados.',
     url: 'https://demo-proyecto1.com',
-    image: '/images/inventory.png',
+    image: `${base}images/inventory.png`,
     stack: ['Laravel', 'MySQL', 'Vue.js', 'Docker'],
     category: 'web'
   },
@@ -14,7 +16,7 @@ const projects = [
     name: 'App de Citas Médicas',
     description: 'Aplicación móvil y web para agendamiento de citas médicas con notificaciones automáticas.',
     url: 'https://demo-proyecto2.com',
-    image: '/images/medical-app.png',
+    image: `${base}images/medical-app.png`,
     stack: ['Ionic', 'Angular', 'Node.js', 'PostgreSQL'],
     category: 'mobile' // Mobile category
   },
@@ -22,7 +24,7 @@ const projects = [
     name: 'E-commerce Personalizado',
     description: 'Tienda online con pasarela de pagos, gestión de productos y panel administrativo.',
     url: 'https://demo-proyecto3.com',
-    image: '/images/ecommerce.png',
+    image: `${base}images/ecommerce.png`,
     stack: ['Laravel', 'React', 'Stripe API', 'AWS'],
     category: 'web'
   }
