@@ -5,10 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   // URL base para entornos corporativos de MoLoTech (Se reemplaza después por https://molotech.co)
-  site: 'https://cristhianmoreno06.github.io',
+  site: 'https://cristhianmoreno06.github.io/MoloTechSolutions',
   base: '/MoloTechSolutions/', // IMPORTANTE
   integrations: [
-    sitemap()
+    // sitemap()
   ],
   vite: {
     plugins: [tailwindcss()],
